@@ -1,0 +1,40 @@
+**/__pycache__
+**/.classpath
+**/.dockerignore
+**/.git
+**/.gitignore
+**/.project
+**/.settings
+**/.toolstarget
+**/.vs
+**/.vscode
+**/pyrightconfig.json
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/azds.yaml
+**/bin
+**/charts
+**/docker-compose*
+**/compose*
+**/Dockerfile*
+**/node_modules
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
+**/.isort.cfg
+**/.pylintrc
+**/.pre-commit-config.yaml
+**/.pdm.toml
+__pypackages__/
+__pycache__/
+
+# All env files
+**/*.env
+
+#Pytest coverage
+*.coverage
+
+#Local folder
+local/
