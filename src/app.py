@@ -9,7 +9,7 @@ from .auth import JWTBearer
 from .lib.models import simulation_M1, simulation_M2, generate_context
 from .models import Input, ModelOutput, SimulateOutput
 
-app = FastAPI(title=__project_name__)
+app = FastAPI(title=__project_name__, allow_origins=["*"])
 
 public_router = APIRouter()
 secured_router = APIRouter(dependencies=[Security(JWTBearer())])
