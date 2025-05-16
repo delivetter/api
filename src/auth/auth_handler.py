@@ -8,15 +8,14 @@ from .. import __project_name__
 from ..config import CONFIG
 
 
-def decode_token(token: str) -> dict[Any, Any] | None:
+def decode_token(token: str):
     JWT_ALGORITHM = "HS256"
     JWT_SECRET = CONFIG.jwt.secret
 
     try:
-        return cast(
-            dict[Any, Any], jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
-        )
-    except JWTError:
+        return jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
+    except JWTError as e:
+        print(e)
         logging.debug("Bearer token couldn't be decoded")
         return None
 

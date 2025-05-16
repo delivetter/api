@@ -5,6 +5,17 @@ dependencies = [
     "gunicorn>=23.0.0",
     "uvicorn>=0.34.2",
     "pydantic>=2.11.4",
+    "pandas>=2.2.3",
+    "osmnx>=2.0.3",
+    "networkx>=3.4.2",
+    "geopandas>=1.0.1",
+    "ortools>=9.12.4544",
+    "folium>=0.19.6",
+    "scikit-learn>=1.6.1",
+    "matplotlib>=3.10.3",
+    "numpy>=2.2.5",
+    "geojson>=3.2.0",
+    "pyclustering>=0.10.1.2",
 ]
 description = "Delivetter Simulations API"
 license = {text = "MIT"}
