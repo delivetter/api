@@ -323,7 +323,7 @@ def drive_route(G_super: nx.DiGraph, routes_df: pd.DataFrame, nodo_entrada: int)
     # 6) Crear el DataFrame con la ruta calculada
     cid_route: CIDRoute = {
         "deposito": nodo_entrada,
-        "sequence": [[nodo_entrada] + route_sequence],  # Aquí se crea la lista de la columna 'cid'
+        "sequence": route_sequence,  # Aquí se crea la lista de la columna 'cid'
         "time_min": total_time_min,
         "distance_km": total_distance_km,
     }
@@ -331,7 +331,7 @@ def drive_route(G_super: nx.DiGraph, routes_df: pd.DataFrame, nodo_entrada: int)
     return cid_route
 
 
-def calculate_results_m1(routes_df: pd.DataFrame, cid_route: pd.DataFrame) -> ModelResults:
+def calculate_results_m1(routes_df: pd.DataFrame, cid_route: CIDRoute) -> ModelResults:
     """
     Calcula el coste total del reparto sumando costes fijos, por tiempo y por distancia.
 
@@ -372,7 +372,7 @@ def map_m1(
     assign_df: pd.DataFrame,
     df_comercios: gpd.GeoDataFrame,
     routes_df: pd.DataFrame,
-    cid_route: pd.DataFrame,
+    cid_route: CIDRoute,
     capacidad_maxima: int,
     min_dist_m=50,
     shp_zone=None,
@@ -542,8 +542,7 @@ def map_m1(
             icon=folium.Icon(prefix="fa", icon="truck", color=color),
             popup=f"{b} ({loads.loc[loads['assigned_cid'] == b, 'required_runs'].values[0]} viajes)",
         ).add_to(truck_layer)
-
-    """
+    
     folium.PolyLine(
         coords,
         color='black',
@@ -551,7 +550,7 @@ def map_m1(
         opacity=0.3,
         tooltip=f"Truck route: {cid_route['time_min']} min"
     ).add_to(truck_layer)
-    """
+    
     # 9) Marcador del depósito
     dep = cid_route["deposito"]
     y_dep = G_super.nodes[dep]["y"]
