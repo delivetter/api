@@ -1,5 +1,6 @@
 from fastapi import APIRouter, FastAPI, Security
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from lib.barrios import get_barrio_polygon
 from lib.geojson import geojson_to_graph
 from lib.map import map_to_html
@@ -9,7 +10,18 @@ from .auth import JWTBearer
 from .lib.models import simulation_M1, simulation_M2, generate_context
 from .models import Input, ModelOutput, SimulateOutput
 
-app = FastAPI(title=__project_name__, allow_origins=["*"])
+app = FastAPI(title=__project_name__)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://delivetter.tech"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 public_router = APIRouter()
 secured_router = APIRouter(dependencies=[Security(JWTBearer())])
