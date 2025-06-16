@@ -6,17 +6,17 @@ This repository contains the backend API for **Delivetter**, built with **FastAP
 
 ## 🚀 Features
 
-* REST API endpoint to trigger delivery simulations
-* Accepts structured input parameters such as delivery locations and delivery method
-* Returns cost and time estimates for each model
+* REST API endpoint to trigger delivery simulations  
+* Accepts structured input parameters such as delivery locations and delivery method  
+* Returns cost and time estimates for each model  
 * Built with FastAPI for performance and automatic documentation
 
 ---
 
 ## 📆 Requirements
 
-* Python ≥ 3.10
-* `uvicorn`, `fastapi`, and other dependencies listed in `requirements.txt`
+* Python ≥ 3.10  
+* [PDM](https://pdm.fming.dev/) for dependency management
 
 ---
 
@@ -24,28 +24,29 @@ This repository contains the backend API for **Delivetter**, built with **FastAP
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/delivetter/api
-cd api
-```
+    ```bash
+    git clone https://github.com/delivetter/api
+    cd api
+    ```
 
 2. (Optional) Create and activate a virtual environment:
 
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
+    ```bash
+    pdm venv create
+    pdm venv activate
+    ```
 
-3. Install dependencies:
+3. Install dependencies using PDM:
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pdm install
+    ```
 
-4. Run the server:
+4. Run the server in development mode:
 
-```bash
-uvicorn main:app --reload --port 8000
-```
+    ```bash
+    pdm run dev
+    ```
 
-The API will be available at `http://localhost:8000`
+The API will be available at:  
+[http://localhost:8000](http://localhost:8000)
